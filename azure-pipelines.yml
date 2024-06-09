@@ -1,6 +1,14 @@
-pool: MyAgentPool
-steps:
-- bash: echo hello world
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
+trigger: 
+-main
+
+pool: 
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: 'Release'
+
+steps: 
+- script: dotnet run
+  displayName: 'dotnet build $(buildConfiguration)'
+
+
